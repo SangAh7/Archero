@@ -8,9 +8,12 @@ public class Archero : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "UMG", "Niagara", "GameplayAbilities"});
 
-		PrivateDependencyModuleNames.AddRange(new string[] {  });
+		PublicIncludePaths.Add("Archero");
+
+		PrivateDependencyModuleNames.AddRange(new string[] { "GameplayTasks", "GameplayTags" });
+
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
