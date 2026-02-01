@@ -6,24 +6,40 @@
 #include "GameFramework/Character.h"
 #include "AHCharacterBase.generated.h"
 
-UCLASS()
+UCLASS(Abstract)
 class ARCHERO_API AAHCharacterBase : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this character's properties
+	
 	AAHCharacterBase();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TObjectPtr<USkeletalMeshComponent> Weapon;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+public:
+
+	UPROPERTY(EditAnywhere, Category = "CharacterBase")
+	float baseAttack; 
+
+	UPROPERTY(EditAnywhere, Category = "CharacterBase")
+	float baseAttackSpeed; 
+
+	UPROPERTY(EditAnywhere, Category = "CharacterBase")
+	float baseMoveSpeed;
+
+	UPROPERTY(EditAnywhere, Category = "CharacterBase")
+	float baseAttackCount; 
+
+	UPROPERTY(EditAnywhere, Category = "CharacterBase")
+	float baseCurHP;
+
+	UPROPERTY(EditAnywhere, Category = "CharacterBase")
+	float baseMaxHP;
 
 };
