@@ -23,6 +23,8 @@ public:
 	virtual void NativeBeginPlay() override;
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
+	
+
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy")
 	class AAHEnemyBase* enemy = nullptr; 
