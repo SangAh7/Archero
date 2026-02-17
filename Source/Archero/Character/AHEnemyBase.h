@@ -4,14 +4,25 @@
 
 #include "CoreMinimal.h"
 #include "Character/AHCharacterBase.h"
+#include "Interaction/EnemyInterface.h"
 #include "AHEnemyBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ARCHERO_API AAHEnemyBase : public AAHCharacterBase
+class ARCHERO_API AAHEnemyBase : public AAHCharacterBase, public IEnemyInterface
 {
 	GENERATED_BODY()
+
+public:
+	AAHEnemyBase();
 	
+
+public:
+	virtual void HighlightActor() override;
+	virtual void UnHighlightActor() override;
+
+	
+
 };
