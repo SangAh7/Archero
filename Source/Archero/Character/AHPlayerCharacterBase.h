@@ -13,5 +13,20 @@ UCLASS()
 class ARCHERO_API AAHPlayerCharacterBase : public AAHCharacterBase
 {
 	GENERATED_BODY()
+
+public:
+	AAHPlayerCharacterBase();
 	
+	virtual void BeginPlay() override;
+
+public:
+
+
+
+public:
+	UPROPERTY(EditAnywhere, Category = "Camera")
+	TObjectPtr<class UCameraComponent> cameraComp;
+
+	UPROPERTY(EditAnywhere, Category = "Camera")
+	TObjectPtr<class USpringArmComponent> springArmComp;
 };

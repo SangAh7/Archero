@@ -7,6 +7,10 @@
 #include "AHPlayerController.generated.h"
 
 class UInputMappingContext;
+class UInputAction;
+struct FInputActionValue; 
+class IEnemyInterface;
+
 
 /**
  * 
@@ -18,13 +22,24 @@ class ARCHERO_API AAHPlayerController : public APlayerController
 
 public:
 	AAHPlayerController();
-
+	virtual void PlayerTick(float DeltaTime);
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void SetupInputComponent() override; 
 
 private:
+	UPROPERTY(EditAnywhere, Category = "Input")
 	TObjectPtr<UInputMappingContext> AHContext;
 
+	UPROPERTY(EditAnywhere, Category = "Input")
+	TObjectPtr<UInputAction> MoveAction;
 
+private:
+	void Move(const FInputActionValue& InputActionValue);
+
+	void CursorTrace();
+
+	TScriptInterface<IEnemyInterface> LastActor;
+	TScriptInterface<IEnemyInterface> ThisActor;
 };
