@@ -3,10 +3,23 @@
 
 #include "Character/AHEnemyBase.h"
 #include "Archero.h"
+#include "AbilitySystem/AHAbilitySystemComponent.h"
+#include "AbilitySystem/AHAttributeSet.h"
 
 AAHEnemyBase::AAHEnemyBase()
 {
 	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
+
+	AbilitysystemComponent = CreateDefaultSubobject<UAHAbilitySystemComponent>(TEXT("AbilitysystemComponent"));
+	AbilitysystemComponent->SetIsReplicated(true);
+	AbilitysystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
+	/*
+	Full : Single Player
+	Mixed : Multiplayer, Player_Controlled
+	Minimal : MultiPlayer, AI_Controlled
+	*/
+
+	AttributeSet = CreateDefaultSubobject<UAHAttributeSet>(TEXT("AttributeSet"));
 }
 
 
@@ -22,5 +35,4 @@ void AAHEnemyBase::UnHighlightActor()
 {
 	GetMesh()->SetRenderCustomDepth(false);
 	Weapon->SetRenderCustomDepth(false);
-
 }

@@ -3,6 +3,7 @@
 
 #include "AHCharacterBase.h"
 
+
 // Sets default values
 AAHCharacterBase::AAHCharacterBase()
 {
@@ -14,10 +15,14 @@ AAHCharacterBase::AAHCharacterBase()
 	Weapon->SetCollisionEnabled(ECollisionEnabled::NoCollision);	
 }
 
+UAbilitySystemComponent* AAHCharacterBase::GetAbilitySystemComponent() const
+{
+	return AbilitysystemComponent;
+}
+
 // Called when the game starts or when spawned
 void AAHCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
