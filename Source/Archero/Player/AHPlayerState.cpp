@@ -7,9 +7,9 @@
 
 AAHPlayerState::AAHPlayerState()
 {
-	AbilitysystemComponent = CreateDefaultSubobject<UAHAbilitySystemComponent>(TEXT("AbilitysystemComponent"));
-	AbilitysystemComponent->SetIsReplicated(true);
-	AbilitysystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
+	AbilitySystemComponent = CreateDefaultSubobject<UAHAbilitySystemComponent>(TEXT("AbilitySystemComponent"));
+	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
 	/*
 	Full : Single Player
 	Mixed : Multiplayer, Player_Controlled
@@ -23,5 +23,5 @@ AAHPlayerState::AAHPlayerState()
 
 UAbilitySystemComponent* AAHPlayerState::GetAbilitySystemComponent() const
 {
-	return AbilitysystemComponent;
+	return AbilitySystemComponent;
 }

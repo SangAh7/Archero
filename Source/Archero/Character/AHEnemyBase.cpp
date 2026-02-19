@@ -10,9 +10,9 @@ AAHEnemyBase::AAHEnemyBase()
 {
 	GetMesh()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
 
-	AbilitysystemComponent = CreateDefaultSubobject<UAHAbilitySystemComponent>(TEXT("AbilitysystemComponent"));
-	AbilitysystemComponent->SetIsReplicated(true);
-	AbilitysystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
+	AbilitySystemComponent = CreateDefaultSubobject<UAHAbilitySystemComponent>(TEXT("AbilitysystemComponent"));
+	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
 	/*
 	Full : Single Player
 	Mixed : Multiplayer, Player_Controlled
@@ -35,4 +35,11 @@ void AAHEnemyBase::UnHighlightActor()
 {
 	GetMesh()->SetRenderCustomDepth(false);
 	Weapon->SetRenderCustomDepth(false);
+}
+
+void AAHEnemyBase::BeginPlay()
+{
+	Super::BeginPlay();
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+	
 }

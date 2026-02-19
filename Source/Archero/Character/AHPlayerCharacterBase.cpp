@@ -6,6 +6,11 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/SceneComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Player/AHPlayerState.h"
+#include "AbilitySystemComponent.h"
+
+
+
 
 AAHPlayerCharacterBase::AAHPlayerCharacterBase()
 {
@@ -31,3 +36,29 @@ void AAHPlayerCharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
 }
+
+void AAHPlayerCharacterBase::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	// Init Ability Actor Info for the Server
+	InitAbilityActorInfo();
+}	
+
+void AAHPlayerCharacterBase::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	// Init Ability Actor Info for the Client
+	InitAbilityActorInfo();
+}
+
+void AAHPlayerCharacterBase::InitAbilityActorInfo()
+{
+	AAHPlayerState* AHPlayerState = GetPlayerState<AAHPlayerState>();
+	check(AHPlayerState);
+	AHPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(AHPlayerState, this);
+	AbilitySystemComponent = AHPlayerState->GetAbilitySystemComponent();
+	AttributeSet = AHPlayerState->GetAttributeSet();
+}
+

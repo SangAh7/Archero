@@ -17,7 +17,7 @@ AAHCharacterBase::AAHCharacterBase()
 
 UAbilitySystemComponent* AAHCharacterBase::GetAbilitySystemComponent() const
 {
-	return AbilitysystemComponent;
+	return AbilitySystemComponent;
 }
 
 // Called when the game starts or when spawned
